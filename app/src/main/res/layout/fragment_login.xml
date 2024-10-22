@@ -18,7 +18,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_goneMarginTop="100dp"
-        tools:ignore="HardcodedText">
+        tools:ignore="HardcodedText,MissingConstraints">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/usernameInput"
@@ -52,24 +52,6 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/errorButton"
-        style="@style/Widget.Material3.Button.OutlinedButton"
-        android:layout_width="376dp"
-        android:layout_height="76dp"
-        android:backgroundTint="@android:color/transparent"
-        android:padding="10dp"
-        android:text="Invalid username or password"
-        android:textColor="@android:color/holo_red_dark"
-        android:visibility="gone"
-        app:cornerRadius="1dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:rippleColor="#FF0000"
-        app:strokeColor="@android:color/holo_red_dark"
-        app:strokeWidth="4dp" />
-
-    <com.google.android.material.button.MaterialButton
         android:id="@+id/SignIn"
         style="@style/Widget.Material3.Button.OutlinedButton"
         android:layout_width="375dp"
@@ -83,7 +65,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password"
         app:layout_constraintVertical_bias="0.100000024"
-        app:rippleColor="#FFC107"
+        app:rippleColor="#000000"
         app:strokeColor="@color/black"
         app:strokeWidth="2dp"
         tools:ignore="HardcodedText,VisualLintButtonSize" />
