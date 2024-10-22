@@ -20,39 +20,25 @@ class ViewmodelLogin @Inject constructor(
 ) : ViewModel() {
 
     fun signIn(username: String, password: String, onSuccess: (String) -> Unit, onError: (String) -> Unit) {
-
-        // Launch coroutine in viewModelScope to handle background task
         viewModelScope.launch {
-
             try {
-                // Use API service to call login
                 val loginResponse = apiService.login(UsernamePassword(username, password))
                 val keypass = loginResponse.keypass
 
-                // Save keypass in SharedPreferences
-                // APP_PREFS -> storage for data
-                // Context.MODE_PRIVATE -> Ensures only this app can access
                 val sharedPreferences = appContext.getSharedPreferences("APP_PREFS", Context.MODE_PRIVATE)
                 sharedPreferences.edit().putString("keypass", keypass).apply()
 
-                // Check on logCat
                 Log.d("ViewmodeLogin", "Received keypass: ${loginResponse.keypass}")
-
-                // If successful, pass the keypass to the onSuccess callback
                 onSuccess(loginResponse.keypass)
 
-            } // Error handling
-            catch (e: HttpException) {
-                // Handle HTTP exceptions
+            } catch (e: HttpException) {
                 Log.e("LoginViewModel", "Error: ${e.message}")
                 onError("Error: ${e.message}")
 
             } catch (e: IOException) {
-                // Handle network or conversion issues
                 onError("Network error: ${e.message}")
 
             } catch (e: Exception) {
-                // Handle any other exception
                 onError("An error occurred: ${e.message}")
             }
         }
